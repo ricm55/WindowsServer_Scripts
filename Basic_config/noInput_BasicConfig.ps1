@@ -26,11 +26,11 @@ if($hostname -ne ""){
     Rename-Computer -NewName $hostname
 }
 
-if($ip_address -ne "" -or $default_gateway -ne "" -or $subnet_mask -ne ""){
+if($ip_address -ne "" -and $default_gateway -ne "" -and $subnet_mask -ne ""){
 
-# Change the default netwoprk adapter settings
-$defaultAdapter = Get-NetIPAddress  | Where-Object {$_.AddressFamily -eq "IPv4" -and $_.InterfaceAlias -match "Ethernet"}
-New-NetIPAddress -IPAddress $ip_address -DefaultGateway $default_gateway -PrefixLength $subnet_mask -InterfaceIndex $defaultAdapter.InterfaceIndex | Out-Null
+    # Change the default netwoprk adapter settings
+    $defaultAdapter = Get-NetIPAddress  | Where-Object {$_.AddressFamily -eq "IPv4" -and $_.InterfaceAlias -match "Ethernet"}
+    New-NetIPAddress -IPAddress $ip_address -DefaultGateway $default_gateway -PrefixLength $subnet_mask -InterfaceIndex $defaultAdapter.InterfaceIndex | Out-Null
 }
 
 if($Dns -ne ""){

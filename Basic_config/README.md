@@ -17,6 +17,6 @@ This script ask user inputs and do these configurations
 
 This script performs the configurations without user intervention. The user can change the default settings at the top of the script.
 
-## Basic_COnfig.psm
+## Basic_Config.psm
 
 This module contain function that can do these configurations
